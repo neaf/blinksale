@@ -1,18 +1,18 @@
-require "xmlsimple"
+require "nokogiri"
 
 module Blinksale
   class Invoice
     attr_accessor :id, :number, :total_amount, :due_amount, :issued_on, :due_on, :currency
 
-    def self.from_hash(hash)
+    def self.from_node(node)
       self.new.tap do |i|
-        i.id = hash["uri"][/\d+$/].to_i
-        i.number = hash["number"]
-        i.total_amount = hash["total"].to_f
-        i.due_amount = hash["total_due"].to_f
-        i.issued_on = Date.strptime(hash["date"], "%Y-%m-%d")
-        i.due_on = Date.strptime(hash["terms"]["due_date"], "%Y-%m-%d")
-        i.currency = hash["currency"]
+        i.id = node.attributes["uri"].content[/\d+$/].to_i
+        i.number = node.xpath('xmlns:number').first.content
+        i.total_amount = node.attributes["total"].content.to_f
+        i.due_amount = node.attributes["total_due"].content.to_f
+        i.issued_on = Date.strptime(node.xpath('xmlns:date').first.content, "%Y-%m-%d")
+        i.due_on = Date.strptime(node.xpath('xmlns:terms').first.attributes["due_date"].content, "%Y-%m-%d")
+        i.currency = node.xpath('xmlns:currency').first.content
       end
     end
   end
@@ -24,14 +24,32 @@ module Blinksale
       @client = client
     end
 
-    def all
-      doc = XmlSimple.xml_in(client.rest_resource["invoices"].get, { "ForceArray" => ["invoice"] })
-      doc["invoice"].map { |hash| Invoice.from_hash(hash) }
+    def all(params = {})
+      headers = {
+        :content_type => "application/vnd.blinksale+xml",
+        :accept => "application/vnd.blinksale+xml"
+      }
+      xml = client.rest_resource["invoices"].get(
+        :params => params,
+        :headers => headers
+      )
+      doc = Nokogiri::XML(xml)
+      doc.xpath('//xmlns:invoice').map do |node|
+        Invoice.from_node(node)
+      end
     end
 
-    def get(id)
-      doc = XmlSimple.xml_in(client.rest_resource["invoices/#{ id }"].get, { "ForceArray" => false })
-      Invoice.from_hash(doc)
+    def get(id, params = {})
+      headers = {
+        :content_type => "application/vnd.blinksale+xml",
+        :accept => "application/vnd.blinksale+xml"
+      }
+      xml = client.rest_resource["invoices/#{ id }"].get(
+        :params => params,
+        :headers => headers
+      )
+      doc = Nokogiri::XML(xml)
+      Invoice.from_node(doc.xpath('//xmlns:invoice').first)
     end
   end
 end
