@@ -1,6 +1,6 @@
-= blinksale
+= Blinksale
 
-Description goes here.
+Basic Blinksale invoice fetcher.
 
 == Contributing to blinksale
  
