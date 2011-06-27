@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tomasz Werbicki"]
   s.date = %q{2011-06-27}
-  s.description = %q{Basic Blinksale invoice fetcher.}
+  s.description = %q{TODO: longer description of your gem}
   s.email = %q{tomasz@werbicki.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Basic Blinksale invoice fetcher.}
+  s.summary = %q{TODO: one-line summary of your gem}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
