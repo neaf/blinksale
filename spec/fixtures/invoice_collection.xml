@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<invoices xmlns="http://www.blinksale.com/api">
+  <invoice status="open" uri="http://example.blinksale.com/invoices/1" total="20.00" total_due="10.00">
+    <client name="Acme">http://example.blinksale.com/clients/1</client>
+
+    <number>100001</number>
+    <date>2006-09-19</date>
+    <terms due_date="2006-10-04">15</terms>
+    <currency>USD</currency>
+
+    <tags>brian, consulting</tags>
+  </invoice>
+  <invoice status="open" uri="http://example.blinksale.com/invoices/1" total="20.00" total_due="10.00">
+    <client name="Acme">http://example.blinksale.com/clients/2</client>
+
+    <number>100002</number>
+    <date>2006-09-19</date>
+    <terms due_date="2006-10-04">15</terms>
+    <currency>USD</currency>
+
+    <tags>brian, consulting</tags>
+  </invoice>
+</invoices>

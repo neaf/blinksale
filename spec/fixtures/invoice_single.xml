@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<invoice xmlns="http://www.blinksale.com/api" uri="http://example.blinksale.com/invoices/1"
+         status="pastdue" subtotal="20.00" total="20.00" paid="10.00" total_due="10.00"
+         surplus="0.00" updated_at="2006-09-20T17:27:48Z" created_at="2006-06-27T22:43:13Z">
+  <client name="Acme">http://example.blinksale.com/clients/2</client>
+  <number>100001</number>
+
+  <po_number>123456</po_number>
+  <date>2006-06-27</date>
+  <terms due_date="2006-07-12">15</terms>
+  <currency>USD</currency>
+
+  <tax amount="0.00">8.75%</tax>
+  <freight>0.00</freight>
+  <late_fee amount="0.00">0%</late_fee>
+  <tags>bob, scott</tags>
+
+  <lines total="882.00">
+    <line>
+      <name>French Hens</name>
+      <quantity>3.0</quantity>
+      <units>Product</units>
+
+      <unit_price>19.00</unit_price>
+      <taxed>false</taxed>
+    </line>
+    <line>
+      <name>Piper-Piping</name>
+
+      <quantity>11.0</quantity>
+      <units>Service</units>
+      <unit_price>75.00</unit_price>
+      <taxed>false</taxed>
+
+    </line>
+  </lines>
+  <deliveries uri="http://example.blinksale.com/invoices/1/deliveries">
+    <delivery uri="http://example.blinksale.com/invoices/1/deliveries/3" created_at="2006-09-22T23:51:42Z">
+      <body>Here's the invoice for the latest work - thanks!</body>
+
+      <recipient name="John Doe" email="john@acme.com">http://example.blinksale.com/clients/2/people/2</recipient>
+      <recipient name="Bob Smith" email="bob@example.com">http://example.blinksale.com/users/1</recipient>
+    </delivery>
+  </deliveries>
+  <payments uri="http://example.blinksale.com/invoices/1/payments" total="10.00">
+
+    <payment uri="http://example.blinksale.com/invoices/1/payments/5" created_at="2006-09-25T18:01:33Z">
+      <amount>10.00</amount>
+      <date>2006-09-25</date>
+      <payment_method>Check</method>
+
+      <number>10001</number>
+    </payment>
+  </payments>
+  <notes>Please reference this invoice number in your check memo.</notes>
+  <include_payment_link>true</include_payment_link>
+
+</invoice>

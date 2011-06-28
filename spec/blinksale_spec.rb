@@ -45,13 +45,5 @@ describe Blinksale::Service do
     it "returns Clients instance" do
       service.clients.should be_an_instance_of(Blinksale::Clients)
     end
-    
-    describe "Clients instance" do
-      let(:clients) { service.clients }
-
-      it "has proper service set" do
-        clients.service.should eql(service)
-      end
-    end
   end
 end
