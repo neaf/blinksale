@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + "/spec_helper")
 
-single_xml = File.read(File.expand_path(File.dirname(__FILE__) + "/fixtures/invoice_single.xml"))
+collection_xml = File.read(File.expand_path(File.dirname(__FILE__) + "/fixtures/invoice_collection.xml"))
 
 describe Blinksale::Invoice do
   describe ".from_node" do
     let(:node) do
-      Nokogiri::XML(single_xml).xpath("//xmlns:invoice").first
+      Nokogiri::XML(collection_xml).xpath("//xmlns:invoice").first
     end
 
     it "returns Invoice instance" do
@@ -22,8 +22,8 @@ describe Blinksale::Invoice do
         invoice.number.should eql("100001")
         invoice.total_amount.should eql(20.0)
         invoice.due_amount.should eql(10.0)
-        invoice.issued_on.should eql(Date.new(2006, 6, 27))
-        invoice.due_on.should eql(Date.new(2006, 7, 12))
+        invoice.issued_on.should eql(Date.new(2006, 9, 19))
+        invoice.due_on.should eql(Date.new(2006, 10, 4))
         invoice.currency.should eql("USD")
       end
     end

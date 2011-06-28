@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<client xmlns="http://www.blinksale.com/api" uri="http://example.blinksale.com/clients/1"
+        updated_at="2006-09-18T16:06:19Z" created_at="2006-05-30T03:38:24Z">
+  <name>Haute Haute Heat</name>
+  <address1>1234 Main Street</address1>
+
+  <address2>Suite 123</address2>
+  <city>Anytown</city>
+  <state>TX</state>
+  <zip>70123</zip>
+
+  <country>US</country>
+  <url>http://www.example.com/</url>
+  <phone>123-555-1212</phone>
+  <fax>123-555-1212</fax>
+
+  <people uri="http://example.blinksale.com/clients/2/people">
+    <person uri="http://example.blinksale.com/clients/2/people/2">
+      <first_name>Bob</first_name>
+      <last_name>Jones</last_name>
+    </person>
+
+  </people>
+  <invoices uri="">
+    <invoice uri="http://example.blinksale.com/invoices/1" />
+  </invoices>
+</client>
