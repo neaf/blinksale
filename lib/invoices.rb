@@ -18,10 +18,10 @@ module Blinksale
   end
 
   class Invoices
-    attr_reader :client
+    attr_reader :service
 
-    def initialize(client)
-      @client = client
+    def initialize(service)
+      @service = service
     end
 
     def all(params = {})
@@ -29,7 +29,7 @@ module Blinksale
         :content_type => "application/vnd.blinksale+xml",
         :accept => "application/vnd.blinksale+xml"
       }
-      xml = client.rest_resource["invoices"].get(
+      xml = service.rest_resource["invoices"].get(
         :params => params,
         :headers => headers
       )
@@ -44,7 +44,7 @@ module Blinksale
         :content_type => "application/vnd.blinksale+xml",
         :accept => "application/vnd.blinksale+xml"
       }
-      xml = client.rest_resource["invoices/#{ id }"].get(
+      xml = service.rest_resource["invoices/#{ id }"].get(
         :params => params,
         :headers => headers
       )
